@@ -60,10 +60,10 @@ def main() -> None:
                 choice: str = input().strip()
                 match choice:
                     case "1":
-                        model: str = input("Digite o modelo para pesquisar!").strip()
+                        model: str = input("Digite o modelo para pesquisar!").lower()
                         Rt.search_by_model(model)
                     case "2":
-                        brand: str = input("Digite a marca para pesquisar!").strip()
+                        brand: str = input("Digite a marca para pesquisar!").lower()
                         Rt.search_by_brand(brand)
                     case "3":
                         year: int = ask_year_input()
