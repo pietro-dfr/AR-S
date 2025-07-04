@@ -44,7 +44,13 @@ def main() -> None:
                 Rt.get_registrations()
 
             case 3:
-                print(f"FUNCIONA {option}")
+                if Rt.is_car_list_empty():
+                    print("A lista de carros registrados está vazia!")
+                    continue
+                Rt.get_registrations()
+                index: int = ask_int_input(Rt.get_car_list())
+                print(f"Removendo carro: {Rt.get_car_list()[index].model}")
+                Rt.remove_car(index)
 
             case 4:
                 if Rt.is_car_list_empty():
@@ -107,8 +113,19 @@ def ask_market_value_input() -> float:
 
 
 # end-def
+def ask_int_input(car_list: list[Car]):
+    index = None
+    while True:
+        try:
+            index = int(input("Index para remover: "))
+        except ValueError:
+            print("Só números inteiros!")
+            continue
+        if not 0 <= index <= len(car_list) - 1:
+            print("Index inválido!")
+            continue
+    return index
+
 
 if __name__ == "__main__":
     main()
-
-# pesquis: menu: nome marca anofabri
